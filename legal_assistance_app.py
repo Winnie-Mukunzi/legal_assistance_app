@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import re
 import nltk
-nltk.download('punkt') # A common dataset needed for tokenization
+
 
 # Function to extract sentences from text
 def extract_sentences(text):
