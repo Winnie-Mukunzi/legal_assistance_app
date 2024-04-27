@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import re
-import nltk
 
 
 # Function to extract sentences from text
@@ -46,7 +45,7 @@ def search_text_regex(text, keyword):
 
 # Streamlit App
 def main():
-    st.title("Retrieval of relevant legal extracts")
+    st.title("Keyword Search in Text Document")
 
     # Fetch the text document from GitHub URL
     url = "https://raw.githubusercontent.com/Winnie-Mukunzi/Module-IV/main/RetirementBenefitsAct3of1997_subsidiary_Rev2022.txt"
