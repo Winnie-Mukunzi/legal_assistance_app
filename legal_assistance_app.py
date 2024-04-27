@@ -45,7 +45,7 @@ def search_text_regex(text, keyword):
 
 # Streamlit App
 def main():
-    st.title("Keyword Search in Text Document")
+    st.title("Retrieval of relevant legal extracts")
 
     # Fetch the text document from GitHub URL
     url = "https://raw.githubusercontent.com/Winnie-Mukunzi/Module-IV/main/RetirementBenefitsAct3of1997_subsidiary_Rev2022.txt"
