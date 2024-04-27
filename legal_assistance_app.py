@@ -38,7 +38,7 @@ def search_text_regex(text, keyword):
 
         if re.search(keyword, sentence, flags=re.IGNORECASE):  # Ignore case for flexibility
             # Highlight keyword in the sentence with red color
-            highlighted_sentence = re.sub(rf'({re.escape(keyword)})', r'<span style="color:red"><b>\1</b></span>', sentence, flags=re.IGNORECASE)
+            highlighted_sentence = f"**{keyword}**"
             matching_sentences.append((part_heading, highlighted_sentence))
 
     return matching_sentences
