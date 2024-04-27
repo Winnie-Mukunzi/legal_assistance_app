@@ -1,5 +1,4 @@
 
-
 pandas
 numpy
 matplotlib
@@ -8,3 +7,4 @@ scikit-learn
 statsmodels
 datetime
 keras
+nltk
