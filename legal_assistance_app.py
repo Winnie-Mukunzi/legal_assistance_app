@@ -66,7 +66,7 @@ if matching_sentences:
             st.markdown(f"{sentence_with_highlight}\n")
 else:
     st.markdown(f"No matching sentences found for '**{keyword}**'.")
-rd Search in Text Document")
+    rd Search in Text Document")
 
     # Fetch the text document from GitHub URL
     url = "https://raw.githubusercontent.com/Winnie-Mukunzi/Module-IV/main/RetirementBenefitsAct3of1997_subsidiary_Rev2022.txt"
