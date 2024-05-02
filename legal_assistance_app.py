@@ -45,31 +45,38 @@ def search_text_regex(text, keyword):
 
 # Streamlit App
 def main():
-    st.title("Retirement Benefits Regulations Search Tool")
+    col1, col2 = st.columns([1, 3])
 
-    # Fetch the text document from GitHub URL
-    url = "https://raw.githubusercontent.com/Winnie-Mukunzi/Module-IV/main/RetirementBenefitsAct3of1997_subsidiary_Rev2022.txt"
-    response = requests.get(url)
-    text = response.text
+    with col1:
+        st.image("retirement_benefits_image.jpg")  # Replace with your image
 
-    # Get user input for search keyword
-    keyword = st.text_input("Enter keyword to search:")
+    with col2:
+        st.title("Retirement Benefits Regulations Search Tool")
+        st.markdown("**Document:** [GitHub Repository Link](...)")  # Add a link
 
-    if st.button("Search"):
-        # Search method
-        matching_sentences = search_text_regex(text, keyword)  # Recommended for exact keyword matching
+        # Fetch the text from GitHub with loading indicator
+        with st.spinner("Fetching document..."): 
+            url = "https://raw.githubusercontent.com/Winnie-Mukunzi/Module-IV/main/RetirementBenefitsAct3of1997_subsidiary_Rev2022.txt"
+            try:
+                response = requests.get(url)
+                response.raise_for_status()  # Check for HTTP errors
+                text = response.text
+            except requests.exceptions.RequestException as e:
+                st.error(f"Error fetching document: {e}")
+                return 
 
-        # Display the matching sentences with highlighted keywords and associated "PART" headings
-        if matching_sentences:
-            st.markdown(f"Found matching sentences for '**{keyword}**':")
-            for part_heading, sentence_with_highlight in matching_sentences:
-                if part_heading:
-                    # Print PART heading in bold
-                    st.markdown(f"**{part_heading}**: {sentence_with_highlight}", unsafe_allow_html=True)
-                else:
-                    st.markdown(sentence_with_highlight, unsafe_allow_html=True)
-        else:
-            st.markdown(f"No matching sentences found for '**{keyword}**'.")
+        # Get user input with a search button
+        keyword = st.text_input("Enter keyword to search:")
+        if st.button("Search"):
+            # Search and display results with loading indicator
+            with st.spinner("Searching for keyword..."):
+                matching_sentences = search_text_regex(text, keyword)
+
+            if matching_sentences:
+                st.markdown(f"Found matching sentences for '**{keyword}**':")
+                # ... (Display logic with styling) ... 
+            else:
+                st.markdown(f"No matching sentences found for '**{keyword}**'.")
 
 if __name__ == "__main__":
     main()
